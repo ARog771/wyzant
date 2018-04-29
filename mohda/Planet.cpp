@@ -2,13 +2,26 @@
 #include <cmath>
 #include <iostream>
 
+// Newton Gravitational Constant.
 const double GRAVITY = 0.000000000066742;
 
+
+//
+// Earth was used as a unit test, the results are
+// below. 
+//
 const char *EARTH_NAME = "earth";
 // Kilograms.
 const double EARTH_MASS = 5.972 * pow(10,24); 
 // meters
 const double EARTH_RADIUS = 6371000;
+// Planet Details
+// name: earth
+// radius: 6.371e+06
+// mass: 5.972e+24
+// surface area: 5.10064e+14
+// volume: 1.08321e+21
+// acceleration: 9.81983
 
 
 class Planet
@@ -69,9 +82,44 @@ public:
 
 int main(void)
 {
-    Planet earth(EARTH_NAME, EARTH_MASS, EARTH_RADIUS);
-    earth.Display();
+    Planet planet;
+    bool more;
 
+    do {
+	std::string planetName;
+	double planetMass;
+	double planetRadius;
+
+	std::cout << "enter planet name: ";
+	std::cin >> planetName ;
+	std::cout << std::endl;
+
+	std::cout << "enter planet mass: ";
+	std::cin >> planetMass ;
+	std::cout << std::endl;
+
+	std::cout << "enter planet radius: ";
+	std::cin >> planetRadius ;
+	std::cout << std::endl;
+
+	planet.setName(planetName);
+	planet.setRadius(planetRadius);
+	planet.setMass(planetMass);
+
+	planet.Display();
+	std::cout << std::endl;
+	
+	char m;
+	std::cout << "enter another planet?(y)";
+	std::cin >> m;
+	std::cout << std::endl;
+
+	if (m == 'Y' || m == 'y')
+	    more = true;
+	else 
+	    more = false;
+
+    } while (more);
 
     return 0;
 }
