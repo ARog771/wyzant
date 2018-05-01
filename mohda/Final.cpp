@@ -4,6 +4,7 @@
 #include <vector>
 
 // Newton Gravitational Constant.
+// The G constant is in seconds per meter per kilogram.
 const double GRAVITY = 0.000000000066742;
 
 //
@@ -214,7 +215,7 @@ void SortPlanets(void)
 	sorted = true;
 	for (int i = 0; i < vPlanets.size() - 1; i++)
 	{
-	    if (0>vPlanets[i].getName().compare(vPlanets[i].getName()))
+	    if (0<vPlanets[i].getName().compare(vPlanets[i+1].getName()))
 	    {
 		Planet temp = vPlanets[i];
 		vPlanets[i] = vPlanets[i+1];
