@@ -59,7 +59,26 @@ void InsertionSort(void)
 
 void SelectionSort(void)
 {
+    int pmin,temp;
+    
+    for (int i = 0; i < selectionSortedVector.size()-1; i++)
+    {
+	pmin = i;
+	
+	for (int j= i + 1; j < selectionSortedVector.size(); j++)
+	{
 
+	    if (selectionSortedVector[j] < selectionSortedVector[pmin])
+		pmin = j;
+	}
+
+	if (pmin != i)
+	{
+	    temp = selectionSortedVector[i];
+	    selectionSortedVector[i] = selectionSortedVector[pmin];
+	    selectionSortedVector[pmin] = temp;
+	}
+    }
 }
 
 int main(void)
@@ -94,6 +113,10 @@ int main(void)
     std::cout.setf(std::ios::fixed);
     std::cout << "Bubble Sort of: " << vectorSize << " took: " << duration << " seconds" << std::endl;
 
+    //for (int j = 0; j < bubbleSortedVector.size(); j++)
+    //	std::cout << bubbleSortedVector[j] << " ";
+    //std::cout << std::endl;
+
     start = std::clock();
     
     InsertionSort();
@@ -102,9 +125,23 @@ int main(void)
     
     std::cout.setf(std::ios::fixed);
     std::cout << "Insertion Sort of: " << vectorSize << " took: " << duration << " seconds" << std::endl;
-    for (int j = 0; j < insertionSortedVector.size(); j++)
-	std::cout << insertionSortedVector[j] << " ";
-    std::cout << std::endl;
+   
+    //for (int j = 0; j < insertionSortedVector.size(); j++)
+    //	std::cout << insertionSortedVector[j] << " ";
+    //std::cout << std::endl;
+
+    start = std::clock();
+    
+    SelectionSort();
+    
+    duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+    
+    std::cout.setf(std::ios::fixed);
+    std::cout << "Selection Sort of: " << vectorSize << " took: " << duration << " seconds" << std::endl;
+
+    //for (int j = 0; j < selectionSortedVector.size(); j++)
+    //	std::cout << selectionSortedVector[j] << " ";
+    //std::cout << std::endl;
 
     return 0;
 }
