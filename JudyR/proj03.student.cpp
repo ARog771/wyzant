@@ -1,5 +1,10 @@
 #include <string>
 #include <iostream>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
 
 enum Operation
 {
@@ -95,6 +100,26 @@ int main(int argc, char *argv[])
               << " buffer: " << buffer
               << " source file: " << srcfile
               << " destiation file: " << dstfile << std::endl;
+    char *transfer = new char[buffer];
+    int filesize = 0;
+    
+    while(filesize =! 0)
+    {
+        int size_of_srcfile = open(const char *"proj03.student.cpp");
+        filesize = size_of_file;
+         
+        int size_of_dstfile = open(const char*dstfile, o_append | o_trunc);
+        
+        ssize_t rd_file = read(size_of_dstfile, transfer);
+        
+        ssize_t wr_file = write(dstfile, transfer, filesize);
+        transfer -= filesize;  
+        
+    }
+    close(size_of_srcfile);
+    close(size_of_dstfile);
+ 
 
     return retCode;
+    
 }
